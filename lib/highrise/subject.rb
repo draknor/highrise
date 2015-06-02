@@ -4,6 +4,12 @@ module Highrise
       Note.find_all_across_pages(:from => "/#{self.class.collection_name}/#{id}/notes.xml")
     end
 
+    def notes_each
+      Note.find_each(:from => "/#{self.class.collection_name}/#{id}/notes.xml") do |record|
+        yield record
+      end
+    end
+
     def add_note(attrs={})
       attrs[:subject_id] = self.id
       attrs[:subject_type] = self.label
@@ -18,6 +24,12 @@ module Highrise
 
     def emails
       Email.find_all_across_pages(:from => "/#{self.class.collection_name}/#{id}/emails.xml")
+    end
+
+    def emails_each
+      Email.find_each(:from => "/#{self.class.collection_name}/#{id}/emails.xml") do |record|
+        yield record
+      end
     end
 
     def upcoming_tasks
