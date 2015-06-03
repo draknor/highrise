@@ -8,23 +8,23 @@ module Highrise
       load_attributes_from_response(post(:complete))
     end
 
-    def self.all
+    def self.all(*args)
       find(:all, from: :all)
     end
 
-    def self.upcoming
+    def self.upcoming(*args)
       find(:all, from: :upcoming)
     end
 
-    def self.assigned
+    def self.assigned(*args)
       find(:all, from: :assign)
     end
 
-    def self.completed
+    def self.completed(*args)
       find(:all, from: :completed)
     end
 
-    def self.today
+    def self.today(*args)
       find(:all, from: :today)
     end
 
